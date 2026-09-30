@@ -117,6 +117,20 @@
       font-size: 0.92rem;
       color: var(--muted);
     }
+    .story .examples {
+      margin: 0.4rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .story .examples li {
+      padding: 0.35rem 0 0;
+      border: none;
+    }
+    .story .examples li::before { display: none; }
+    .story .examples strong {
+      font-weight: 650;
+      color: var(--ink);
+    }
     .decision {
       background: var(--paper);
       border-left: 3px solid var(--accent);
@@ -185,8 +199,13 @@
         <p>Follow, chat, posts — a normal starting point.</p>
       </li>
       <li>
-        <em>Growing into the stack</em>
-        <p>Heavy traffic saturated the DB and broke auth. That stretch pushed me from basics into project-level knowledge: token revocation, moving slow work off the request path, caching/rate limits, background jobs for mail and media… etc.</p>
+        <em>Growing up on the project</em>
+        <p>The stretch where I leveled up — from “it runs locally” to knowing how the system fails under real use.</p>
+        <ul class="examples">
+          <li><strong>Auth under load.</strong> Heavy traffic saturated the DB and login/session checks stalled. Lesson: token revocation, and keep slow work off the request path.</li>
+          <li><strong>Request path bloat.</strong> Sending mail or processing media inside the HTTP handler made the API crawl. Lesson: queue it — background jobs for mail and media.</li>
+          <li><strong>Same query, again and again.</strong> Hot endpoints hammered Postgres with identical reads. Lesson: caching and rate limits so one spike doesn’t take everything down.</li>
+        </ul>
       </li>
       <li>
         <em>Empty feed = blank product</em>
